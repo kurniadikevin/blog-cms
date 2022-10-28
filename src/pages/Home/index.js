@@ -8,23 +8,21 @@ import axios from 'axios';
 export function HomePage() {
  
     const [data,setData]= useState([{title:'loading data', date : new Date(), _id: 'loading data'}]);
-    const [count,setCount] = useState(0);
+    
     const [rerender, setRerender] = useState(false);
 
     const callRestApi = async () => {
         const restEndpoint = "http://localhost:5000/posts";
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
-        console.log(jsonResponse);
-        if(data !== jsonResponse){
+        //console.log(jsonResponse);
           setData(jsonResponse)
-         console.log('render')
-        }
+        console.log('render')
+      
         
     };
 
      const deletePost= async function(post) {
-        setCount(count + 1);
          await axios.delete(`http://localhost:5000/posts/${post._id}`);
         console.log('Delete successful'); 
         setRerender(!rerender);  
@@ -34,7 +32,7 @@ export function HomePage() {
     useEffect(()=>{
         callRestApi();
 
-    },[])
+    },[rerender])
 
    
     
@@ -57,10 +55,12 @@ export function HomePage() {
                                {formatDate(item.date)}
                             </div>
                             <div className='btn-container'>
-                            <div id='updateBtn'>Update{count}</div>
-                           {/*  <form method='delete' action = {`http://localhost:5000/posts/${item._id}/delete`}> */}
+                            <Link className='updateBtn' id='link2'
+                             to={{ pathname: `/posts/${item._id}/update`,  }}>
+                            <div>Update</div>
+                            </Link>
                             <button id='deleteBtn' onClick={()=> deletePost(item)}>Delete</button>
-                            {/* </form> */}
+                           
                             </div>
                         </div>
                     )

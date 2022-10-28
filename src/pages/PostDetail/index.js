@@ -8,7 +8,7 @@ import { formatDate} from '../../functions';
 
 
 
-export function PostDetail(props) {
+export function PostDetail() {
   
   const { id } = useParams();
 

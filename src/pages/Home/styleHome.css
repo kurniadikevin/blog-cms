@@ -1,7 +1,7 @@
 .data-collection{
     display: grid;
     grid-template-columns: repeat(3,1fr);
-    grid-template-rows: repeat(5,1fr);
+    grid-template-rows: repeat(auto-fill);
     gap: 50px;
 }
 
@@ -24,7 +24,7 @@
     padding-top: 30px;
     display: flex;
     flex-direction: column;
-    
+    padding-bottom: 60px;
 }
 
 .data-title{
@@ -55,18 +55,18 @@
 }
 
 .btn-container{
-    padding-top: 50px;
+    padding-top: 30px;
     font-size: 12pt;
     display: flex;
     gap: 20px;
 }
 
-#updateBtn, #deleteBtn{
+.updateBtn, #deleteBtn{
     cursor: pointer;
    transition: 0.5s;
 }
 
-#updateBtn:hover, #deleteBtn:hover{
+.updateBtn:hover, #deleteBtn:hover{
     font-weight: 700;
     border-left: 1px solid black;
     padding-left: 10px;
