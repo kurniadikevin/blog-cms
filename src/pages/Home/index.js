@@ -1,36 +1,50 @@
-import logo from '../../logo.svg';
-import './style.css';
 import { Link } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import Dashboard from '../dashboard';
+import './styleHome.css';
+import { formatDate} from '../../functions';
 
 export function HomePage() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+ 
+    const [data,setData]= useState([{title:'loading data', date : new Date()}]);
 
-      <div className="App-line"></div>
-      
-      <main className="App-main">
-        <p>
-          Page 1
-        </p>
+    const restEndpoint = "http://localhost:5000/posts";
 
-        <Link to="/page2" className="App-link">
-          Next Page
-        </Link>
-      </main>
-    </div>
-  );
+    const callRestApi = async () => {
+        const response = await fetch(restEndpoint);
+        const jsonResponse = await response.json();
+        console.log(jsonResponse);
+        setData( jsonResponse);
+    };
+
+    // useEffect once
+    useEffect(()=>{
+        callRestApi();
+       
+    },[])
+    
+    return (
+        <div>
+            <Dashboard/>
+            <div className="data-collection">
+                {data.map(function(item){
+                    return (
+                        
+                        <div className='data-container'>
+                            <Link className='data-title' id='link2'
+                             to={{ pathname: `/posts/${item._id}`,  }}
+                            >
+                                <div >{item.title}</div>
+                            </Link>
+                            <div className='data-body'>{item.body}</div>
+                            <div className='data-author'>{item.author}</div>
+                            <div className='data-date'>
+                               {formatDate(item.date)}
+                            </div>
+                        </div>
+                    )
+                })}
+            </div>
+        </div>
+    )
 }
