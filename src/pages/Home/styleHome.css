@@ -47,8 +47,27 @@
 }
 .data-author{
     padding-bottom: 25px;
+    font-weight: 700;
 }
 .data-date{
     font-size: 12pt;
     font-style: italic;
+}
+
+.btn-container{
+    padding-top: 50px;
+    font-size: 12pt;
+    display: flex;
+    gap: 20px;
+}
+
+#updateBtn, #deleteBtn{
+    cursor: pointer;
+   transition: 0.5s;
+}
+
+#updateBtn:hover, #deleteBtn:hover{
+    font-weight: 700;
+    border-left: 1px solid black;
+    padding-left: 10px;
 }
