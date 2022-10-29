@@ -34,12 +34,17 @@ body{
     transform: translateX(-5px);
   }
 
-.home-link, .create-link{
+.home-link, .create-link, .login-link{
   text-decoration: none;
   color: var(--black);
   font-size: 18pt;
   cursor: pointer;
   transition: 0.5s;
+}
+
+.login-link:hover{
+  padding-right: 20px;
+  border-right: 1px solid var(--black);
 }
 
 .home-link:hover{

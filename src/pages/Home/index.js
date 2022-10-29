@@ -4,6 +4,7 @@ import Dashboard from '../dashboard';
 import './styleHome.css';
 import { formatDate} from '../../functions';
 import axios from 'axios';
+import LogIn from '../login/logIn';
 
 
 export function HomePage() {
@@ -38,6 +39,7 @@ export function HomePage() {
     return (
         <div>
             <Dashboard/>
+            <LogIn/>
             <div className="data-collection">
                 {data.map(function(item){
                     return (
