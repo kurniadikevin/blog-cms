@@ -5,6 +5,7 @@ import './styleHome.css';
 import { formatDate} from '../../functions';
 import axios from 'axios';
 
+
 export function HomePage() {
  
     const [data,setData]= useState([{title:'loading data', date : new Date(), _id: 'loading data'}]);
@@ -17,9 +18,7 @@ export function HomePage() {
         const jsonResponse = await response.json();
         //console.log(jsonResponse);
           setData(jsonResponse)
-        console.log('render')
-      
-        
+        console.log('render')        
     };
 
      const deletePost= async function(post) {
@@ -29,9 +28,9 @@ export function HomePage() {
     }
 
     // useEffect once
-    useEffect(()=>{
-        callRestApi();
-
+    useEffect(() =>{
+        callRestApi()
+       
     },[rerender])
 
    
@@ -59,7 +58,7 @@ export function HomePage() {
                              to={{ pathname: `/posts/${item._id}/update`,  }}>
                             <div>Update</div>
                             </Link>
-                            <button id='deleteBtn' onClick={()=> deletePost(item)}>Delete</button>
+                            <div id='deleteBtn' onClick={()=> deletePost(item)}>Delete</div>
                            
                             </div>
                         </div>

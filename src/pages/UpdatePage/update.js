@@ -1,10 +1,8 @@
 import Dashboard from "../dashboard";
 import './style.css';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useParams} from 'react-router-dom';
-import { Link } from "react-router-dom";
-
 
 export function UpdatePost(){
 
@@ -13,16 +11,35 @@ export function UpdatePost(){
     const [body,setBody]= useState('');
     const { id } = useParams();
 
-   const updatePost = async()=>{
+  //update post
+   const updatePost = async(e)=>{
+        e.preventDefault()
         const article = { 
             title: title,
             body: body,
             author: author,
             _id : id };
         await axios.put(`http://localhost:5000/posts/${id}`, article);
-        //this.setState({ updatedAt: response.data.updatedAt });
         console.log('update post')
+        window.location='/';
+
    }
+
+   // make default value on update
+  const callRestApi = async () => {
+    const restEndpoint = `http://localhost:5000/posts/${id}`;
+      const response = await fetch(restEndpoint);
+      const jsonResponse = await response.json();
+      console.log(jsonResponse);
+      setTitle(jsonResponse[0].title);
+      setAuthor(jsonResponse[0].author);
+      setBody(jsonResponse[0].body);
+  };
+
+  useEffect(()=>{
+    callRestApi()
+  },[])
+
 
    return(
     <div>

@@ -44,6 +44,9 @@
     padding-bottom: 25px;
    font-weight: 450;
    font-size: 12pt;
+   white-space: pre-line;
+
+   
 }
 .data-author{
     padding-bottom: 25px;
@@ -64,10 +67,16 @@
 .updateBtn, #deleteBtn{
     cursor: pointer;
    transition: 0.5s;
+   font-weight: 700;
+   text-decoration: none;
 }
 
 .updateBtn:hover, #deleteBtn:hover{
-    font-weight: 700;
+    
     border-left: 1px solid black;
     padding-left: 10px;
 }
+
+    .updateBtn{
+        color: black;
+    }

@@ -25,7 +25,7 @@ export const toggleMode= ()=>{
           toggleBtn.value = 'night'
           iconMode.textContent='dark_mode'
           
-      } else{
+      } else {
           const body = document.querySelector('body');
           body.style.backgroundColor=black;
           body.style.color=white;

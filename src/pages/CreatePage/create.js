@@ -3,7 +3,7 @@ import './style.css';
 
 export function CreatePost(){
 
-
+  
    return(
     <div>
         <Dashboard/>

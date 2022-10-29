@@ -1,12 +1,8 @@
-import logo from '../../logo.svg';
 import './style.css';
-import { Link } from 'react-router-dom';
 import Dashboard from '../dashboard';
 import { useParams} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { formatDate} from '../../functions';
-
-
 
 export function PostDetail() {
   
@@ -16,9 +12,9 @@ export function PostDetail() {
   const [comment,setComment] = useState([{title:'loading data', date : new Date()}]);
 
   //api for post
-  const restEndpoint = `http://localhost:5000/posts/${id}`;
-
+ 
   const callRestApi = async () => {
+    const restEndpoint = `http://localhost:5000/posts/${id}`;
       const response = await fetch(restEndpoint);
       const jsonResponse = await response.json();
       console.log(jsonResponse);
