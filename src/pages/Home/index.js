@@ -10,16 +10,15 @@ import LogIn from '../login/logIn';
 export function HomePage() {
  
     const [data,setData]= useState([{title:'loading data', date : new Date(), _id: 'loading data'}]);
-    
+    const [currentUser,setCurrentUser] = useState([])
     const [rerender, setRerender] = useState(false);
 
     const callRestApi = async () => {
         const restEndpoint = "http://localhost:5000/posts";
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
-        //console.log(jsonResponse);
-          setData(jsonResponse)
-        console.log('render')        
+        setData(jsonResponse);
+        console.log(jsonResponse);      
     };
 
      const deletePost= async function(post) {
@@ -28,17 +27,26 @@ export function HomePage() {
         setRerender(!rerender);  
     }
 
+    const callRestApiUser = async () => {
+        const rest = "http://localhost:5000/currentUser";
+        const response = await fetch(rest);
+        const jsonRes = await response.json();
+        setCurrentUser(jsonRes)
+        console.log(jsonRes); 
+    };
+
+
     // useEffect once
     useEffect(() =>{
-        callRestApi()
-       
+        callRestApi();
+        callRestApiUser();
     },[rerender])
 
    
     
     return (
         <div>
-            <Dashboard/>
+            <Dashboard currentUser={currentUser}/>
             <LogIn/>
             <div className="data-collection">
                 {data.map(function(item){
@@ -61,7 +69,7 @@ export function HomePage() {
                             <div>Update</div>
                             </Link>
                             <div id='deleteBtn' onClick={()=> deletePost(item)}>Delete</div>
-                           
+                         
                             </div>
                         </div>
                     )

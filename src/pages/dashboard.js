@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import {toggleMode} from '../functions';
 import { useState } from 'react';
 
-function Dashboard() {
+function Dashboard(props) {
   
   const [toggle,setToggle] = useState(false);
 
@@ -28,11 +28,13 @@ function Dashboard() {
   return (
       <div className="dashboard">
          <Link  to="/" className="blog-name" id='link'>
-          <div >Blackboard Journal CMS </div>
+          <div >Blackboard Journal CMS  </div>
+
           
         </Link>
         <div className='dashboard-menu'>
-          <div className='login-link' onClick={toggleLogin} >Log-in</div>
+          <div>{props.currentUser}</div>
+          <div className='login-link' id='link2' onClick={toggleLogin} >Log-in</div>
           <Link  to="/" className='home-link' id='link2'>
             <div>Home</div>
           </Link>
@@ -45,6 +47,7 @@ function Dashboard() {
             </span>
            </div>
         </div>
+
       </div>
     );
   }
