@@ -69,6 +69,7 @@
    transition: 0.5s;
    font-weight: 700;
    text-decoration: none;
+   display: none;
 }
 
 .updateBtn:hover, #deleteBtn:hover{

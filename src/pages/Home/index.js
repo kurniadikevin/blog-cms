@@ -27,19 +27,10 @@ export function HomePage() {
         setRerender(!rerender);  
     }
 
-    const callRestApiUser = async () => {
-        const rest = "http://localhost:5000/currentUser";
-        const response = await fetch(rest);
-        const jsonRes = await response.json();
-        setCurrentUser(jsonRes)
-        console.log(jsonRes); 
-    };
-
-
     // useEffect once
     useEffect(() =>{
         callRestApi();
-        callRestApiUser();
+       
     },[rerender])
 
    

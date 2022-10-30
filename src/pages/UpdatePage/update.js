@@ -22,7 +22,6 @@ export function UpdatePost(){
         await axios.put(`http://localhost:5000/posts/${id}`, article);
         console.log('update post')
         window.location='/';
-
    }
 
    // make default value on update
@@ -51,7 +50,7 @@ export function UpdatePost(){
             <div>
             <label  className="title-label">Title</label>
             <input type='text' id="title-input" name='title'
-             value={title} onChange={(e) => setTitle(e.target.value)} ></input>
+            ></input>
             </div>
             <div>
             <label className="author-label">Author</label>
