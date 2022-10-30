@@ -24,15 +24,14 @@ function LogIn(){
        const createBtn = document.querySelector('.create-link');
        const updateBtn = document.querySelectorAll('.updateBtn');
        const deleteBtn = document.querySelectorAll('#deleteBtn');
+       const loginComponent = document.querySelector('.login-component');
 
        createBtn.style.display='block';
        for(let i=0; i< updateBtn.length; i++){
         updateBtn[i].style.display='block';
         deleteBtn[i].style.display='block';
        }
-      
-
-       
+      loginComponent.style.display='none';
         
    }
 

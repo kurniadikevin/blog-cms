@@ -9,7 +9,9 @@ export function UpdatePost(){
     const [title,setTitle]= useState('');
     const [author,setAuthor] = useState('');
     const [body,setBody]= useState('');
+    const [status,setStatus]= useState(true);
     const { id } = useParams();
+
 
   //update post
    const updatePost = async(e)=>{
@@ -18,7 +20,8 @@ export function UpdatePost(){
             title: title,
             body: body,
             author: author,
-            _id : id };
+            _id : id ,
+          published : status}
         await axios.put(`http://localhost:5000/posts/${id}`, article);
         console.log('update post')
         window.location='/';
@@ -50,6 +53,7 @@ export function UpdatePost(){
             <div>
             <label  className="title-label">Title</label>
             <input type='text' id="title-input" name='title'
+             value={title} onChange={(e) => setTitle(e.target.value)}
             ></input>
             </div>
             <div>
@@ -63,7 +67,10 @@ export function UpdatePost(){
               value={body} onChange={(e) => setBody(e.target.value)} ></textarea>
             </div>
             <div className="btn-cont">
-            <button id="save-template">Save as Template</button>
+            <select name="published" onChange={(e) => setStatus(e.target.value)}>
+                <option value={true}>Publish</option>
+                <option value={false}>Save as Template</option>
+            </select>
           
             <button id="publish-submit" onClick={updatePost}>Update</button>
 

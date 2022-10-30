@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useEffect, useState,useNavigation } from "react";
+import { useEffect, useState} from "react";
 import Dashboard from '../dashboard';
 import './styleHome.css';
 import { formatDate} from '../../functions';
@@ -14,7 +14,7 @@ export function HomePage() {
     const [rerender, setRerender] = useState(false);
 
     const callRestApi = async () => {
-        const restEndpoint = "http://localhost:5000/posts";
+        const restEndpoint = "http://localhost:5000/posts/all";
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
         setData(jsonResponse);
@@ -54,6 +54,7 @@ export function HomePage() {
                             <div className='data-date'>
                                {formatDate(item.date)}
                             </div>
+                            <div className='publishStatus'> Published : {item.published}</div>
                             <div className='btn-container'>
                             <Link className='updateBtn' id='link2'
                              to={{ pathname: `/posts/${item._id}/update`,  }}>

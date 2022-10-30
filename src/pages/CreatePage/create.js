@@ -27,8 +27,11 @@ export function CreatePost(){
              /* value={body} onChange={(e) => setBody(e.target.value)} */></textarea>
             </div>
             <div className="btn-cont">
-            <button id="save-template">Save as Template</button>
-            <button id="publish-submit" type="submit">Publish</button>
+            <select name="published">
+                <option value={true}>Publish</option>
+                <option value={false}>Save as Template</option>
+            </select>
+            <button id="publish-submit" type="submit">Submit</button>
             </div>
         </form>
 
