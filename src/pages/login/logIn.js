@@ -14,7 +14,7 @@ function LogIn(){
         const article = { 
            username : username,
         password : password};
-        await axios.post(`http://localhost:5000/users/log-in`, article).then(
+        await axios.post(`https://hidden-forest-44892.herokuapp.com/users/log-in`, article).then(
             (res)=> {
               setCurrentUser('login as admin')
             console.log(res.config.data)
