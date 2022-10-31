@@ -40,7 +40,7 @@ function LogIn(){
         <div className="login-component">
             <h2>Log-in to edit </h2>
             <p>{currentUser}</p>
-            <div /* action="http://localhost:5000/users/log-in" method="POST"  */className='loginForm'>
+            <div className='loginForm'>
             <label for="username">Username</label>
             <input name="username" placeholder="username" type="text"
               value={username} onChange={(e) => setUsername(e.target.value)} />
