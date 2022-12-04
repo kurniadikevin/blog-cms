@@ -22,14 +22,14 @@ export function UpdatePost(){
             author: author,
             _id : id ,
           published : status}
-        await axios.put(`https://hidden-forest-44892.herokuapp.com/posts/${id}`, article);
+        await axios.put(`https://blog-api-production-8114.up.railway.app/posts/${id}`, article);
         console.log('update post')
         window.location='/';
    }
 
    // make default value on update
   const callRestApi = async () => {
-    const restEndpoint = `https://hidden-forest-44892.herokuapp.com/posts/${id}`;
+    const restEndpoint = `https://blog-api-production-8114.up.railway.app/posts/${id}`;
       const response = await fetch(restEndpoint);
       const jsonResponse = await response.json();
       console.log(jsonResponse);

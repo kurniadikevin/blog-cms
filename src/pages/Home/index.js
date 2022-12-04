@@ -14,7 +14,7 @@ export function HomePage() {
     const [rerender, setRerender] = useState(false);
 
     const callRestApi = async () => {
-        const restEndpoint = "https://hidden-forest-44892.herokuapp.com/posts/all";
+        const restEndpoint = "https://blog-api-production-8114.up.railway.app/posts/all";
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
         setData(jsonResponse);
@@ -22,7 +22,7 @@ export function HomePage() {
     };
 
      const deletePost= async function(post) {
-         await axios.delete(`https://hidden-forest-44892.herokuapp.com/posts/${post._id}`);
+         await axios.delete(`https://blog-api-production-8114.up.railway.app/posts/${post._id}`);
         console.log('Delete successful'); 
         setRerender(!rerender);  
     }

@@ -14,7 +14,7 @@ export function PostDetail() {
   //api for post
  
   const callRestApi = async () => {
-    const restEndpoint = `https://hidden-forest-44892.herokuapp.com/posts/${id}`;
+    const restEndpoint = `https://blog-api-production-8114.up.railway.app/posts/${id}`;
       const response = await fetch(restEndpoint);
       const jsonResponse = await response.json();
       console.log(jsonResponse);
@@ -22,7 +22,7 @@ export function PostDetail() {
   };
 
   //api for comment
-  const restEndpointComment = `https://hidden-forest-44892.herokuapp.com/posts/${id}/comment`;
+  const restEndpointComment = `https://blog-api-production-8114.up.railway.app/posts/${id}/comment`;
 
   const callRestApiComment = async () => {
       const responseCom = await fetch(restEndpointComment);
