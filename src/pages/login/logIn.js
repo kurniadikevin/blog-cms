@@ -39,7 +39,7 @@ function LogIn(){
     return(
         <div className="login-component">
             <h2>Log-in to edit </h2>
-            <p>{currentUser}</p>
+            <p>{currentUser} (admin for testing with username:a password:a)</p>
             <div className='loginForm'>
             <label for="username">Username</label>
             <input name="username" placeholder="username" type="text"
@@ -53,4 +53,5 @@ function LogIn(){
     )
 }
 
-export default LogIn
+export default LogIn;
+
