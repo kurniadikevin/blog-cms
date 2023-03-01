@@ -38,15 +38,12 @@ function LogIn(){
     loginComponent.style.display='none';
    }
 
-   //display control button by default
-   useEffect(()=>{
-    displayControlBtn()
-   },[])
 
     return(
         <div className="login-component">
             <h2>Log-in to edit </h2>
-            <p>{currentUser} (admin for testing with username:a password:a)</p>
+            <p>Status: {currentUser}</p>
+            <p>(admin for testing with username:admin123 password:123123)</p>
             <div className='loginForm'>
             <label for="username">Username</label>
             <input name="username" placeholder="username" type="text"
