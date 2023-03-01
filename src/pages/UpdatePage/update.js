@@ -22,14 +22,14 @@ export function UpdatePost(){
             author: author,
             _id : id ,
           published : status}
-        await axios.put(`https://blog-api-production-8114.up.railway.app/posts/${id}`, article);
+        await axios.put(`http://localhost:5000/posts/${id}`, article);
         console.log('update post')
         window.location='/';
    }
 
    // make default value on update
   const callRestApi = async () => {
-    const restEndpoint = `https://blog-api-production-8114.up.railway.app/posts/${id}`;
+    const restEndpoint = `http://localhost:5000/posts/${id}`;
       const response = await fetch(restEndpoint);
       const jsonResponse = await response.json();
       console.log(jsonResponse);

@@ -9,7 +9,7 @@ export function CreatePost(){
         <Dashboard/>
        <div className="create-main">
         
-        <form className="create-form"  method='post' action='https://blog-api-production-8114.up.railway.app/posts/new'>
+        <form className="create-form"  method='post' action='http://localhost:5000/posts/new'>
             <h2>Publish New Post</h2>
             <div>
             <label  className="title-label">Title</label>
