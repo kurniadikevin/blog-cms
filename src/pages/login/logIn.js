@@ -1,6 +1,6 @@
 import './style.css';
 import axios from 'axios';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 
 function LogIn(){
@@ -20,21 +20,28 @@ function LogIn(){
             console.log(res.config.data)
           }
             )
-       // display create update delete button
-       const createBtn = document.querySelector('.create-link');
-       const updateBtn = document.querySelectorAll('.updateBtn');
-       const deleteBtn = document.querySelectorAll('#deleteBtn');
-       const loginComponent = document.querySelector('.login-component');
-
-       createBtn.style.display='block';
-       for(let i=0; i< updateBtn.length; i++){
-        updateBtn[i].style.display='block';
-        deleteBtn[i].style.display='block';
-       }
-      loginComponent.style.display='none';
-        
+          displayControlBtn();
    }
 
+   const displayControlBtn=()=>{
+    // display create update delete button
+    const createBtn = document.querySelector('.create-link');
+    const updateBtn = document.querySelectorAll('.updateBtn');
+    const deleteBtn = document.querySelectorAll('#deleteBtn');
+    const loginComponent = document.querySelector('.login-component');
+
+    createBtn.style.display='block';
+    for(let i=0; i< updateBtn.length; i++){
+      updateBtn[i].style.display='block';
+      deleteBtn[i].style.display='block';
+    }
+    loginComponent.style.display='none';
+   }
+
+   //display control button by default
+   useEffect(()=>{
+    displayControlBtn()
+   },[])
 
     return(
         <div className="login-component">
