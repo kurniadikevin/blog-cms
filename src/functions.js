@@ -40,3 +40,6 @@ export const toggleMode= ()=>{
         }
       }
     
+export const getImageSrc = data => {
+  return `http://localhost:5000/${data[0]}`
+};

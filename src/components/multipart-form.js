@@ -15,13 +15,15 @@ const MultipartForm=()=>{
       }
 
     const submitForm=()=>{
-        console.table(title,author,imageFile[0],body,published)
+        console.table(title,author,imageFile ? imageFile[0]: null,body,published)
     }
 
     const submitFormMultipart=()=>{
         const formData = new FormData();
+        if(imageFile){
+            formData.append("image", imageFile[0]);
+        }
         formData.append('title',title);
-        formData.append("image", imageFile[0]);
         formData.append('author',author);
         formData.append('body',body);
         formData.append('published',published);
@@ -32,12 +34,13 @@ const MultipartForm=()=>{
               'Content-Type': 'multipart/form-data'
             }
         })
+        alert('post submitted')
         console.log('OK')
     }
 
     return(
-    <div className="create-form" >
-            <h2>Publish New Post/ Multipart</h2>
+    <div className="create-form" id="multipart-form">
+            <h2>Publish New Post</h2>
             <div>
             <label  className="title-label">Title</label>
             <input type='text' id="title-input" name='title'
