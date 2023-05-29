@@ -10,7 +10,8 @@ function LogIn(){
     const [currentUser, setCurrentUser]= useState('not log in');
 
     const loginUser = async(e)=>{
-        e.preventDefault()
+        e.preventDefault();
+        if( username && password){
         const article = { 
            username : username,
         password : password};
@@ -21,6 +22,9 @@ function LogIn(){
           }
             )
           displayControlBtn();
+        } else {
+          alert('please insert username and password')
+        }
    }
 
    const displayControlBtn=()=>{
