@@ -1,5 +1,6 @@
 :root{
-  --black: rgb(35,35,35)
+  --black: rgb(35,35,35);
+  --primary: var(black);
 }
 
 body{
@@ -67,7 +68,7 @@ body{
 }
 #toggle-mode{
   font-size: 12pt;
-  
+  cursor: pointer;
 }
 #mode-icon{
   font-size: 20pt;

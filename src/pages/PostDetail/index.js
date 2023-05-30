@@ -49,14 +49,14 @@ export function PostDetail() {
         <div>
           <div className='post-container'>
             <div className='post-col1'>
-             <div className='data-title' id='link2'>{item.title}</div>
               {
                 item.imageContent?.length > 0 ?
               <img id='post-image-detail' alt='post-image' src={getImageSrc(item.imageContent)}
-              width={500} >
+              width={550} >
               </img>
               : ''
               }
+               <div className='data-title' id='link2'>{item.title}</div>
             </div>
             <div className='post-col2'>
               <div className='data-body'>{item.body}</div>

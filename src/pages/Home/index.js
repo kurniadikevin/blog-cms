@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState} from "react";
 import Dashboard from '../dashboard';
 import './styleHome.css';
-import { formatDate, getImageSrc} from '../../functions';
+import { formatDate, getImageSrc, limitDisplayText,renderSeeMore} from '../../functions';
 import axios from 'axios';
 import LogIn from '../login/logIn';
 
@@ -18,17 +18,15 @@ export function HomePage() {
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
         setData(jsonResponse);
-        console.log(jsonResponse);       
-     
     };
-
-
 
      const deletePost= async function(post) {
          await axios.delete(`http://localhost:5000/posts/${post._id}`);
         console.log('Delete successful'); 
         setRerender(!rerender);  
     }
+
+
 
     // useEffect once
     useEffect(() =>{
@@ -50,7 +48,7 @@ export function HomePage() {
                         <div className='data-container'>
                             {
                              item.imageContent?.length > 0 ?
-                            <img id='post-image' alt='post-image' src={getImageSrc(item.imageContent)}
+                            <img id='data-image' alt='post-image' src={getImageSrc(item.imageContent)}
                             width={200} >
                             </img>
                             : ''
@@ -58,9 +56,12 @@ export function HomePage() {
                             <Link className='data-title' id='link2'
                              to={{ pathname: `/posts/${item._id}`,  }}
                             >
-                                <div >{item.title}</div>
+                                <div id='data-title-text'>{item.title}</div>
                             </Link>
-                            <div className='data-body'>{item.body}</div>
+                            <div className='data-body'>
+                                {limitDisplayText(item.body,30)}
+                               {renderSeeMore(item.body, item._id)}
+                            </div>
                             <div className='data-author'>{item.author}</div>
                             <div className='data-date'>
                                {formatDate(item.date)}

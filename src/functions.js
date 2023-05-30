@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 
 export const formatDate= (value)=>{
         let valueStr = value.toString()
@@ -43,3 +44,26 @@ export const toggleMode= ()=>{
 export const getImageSrc = data => {
   return `http://localhost:5000/${data[0]}`
 };
+
+export const limitDisplayText=(data, limit)=>{
+  if(data){
+  const word=data.split(' ');
+  let shortenText;
+  if (word.length >= limit){
+    shortenText = word.splice(0,limit);
+    return shortenText.join(' ') 
+  } else{
+    return data;
+  }}
+}
+
+export const renderSeeMore=(text,id)=>{
+  if(text && text.split(' ').length >= 30){
+      return(
+          <Link  id='link-seemore'
+          to={{ pathname: `/posts/${id}`,  }}
+          >
+          <a> See More..</a>
+          </Link>
+      )}
+}
