@@ -9,7 +9,7 @@ const MultipartForm=(props)=>{
     const [author, setAuthor] = useState();
     const [imageFile, setImageFile]= useState();
     const [body,setBody]= useState();
-    const [published,setPublished]= useState(true);
+    const [published,setPublished]= useState();
 
     const handleFileSelect = (event) => {
         setImageFile(event.target.files);
@@ -31,7 +31,7 @@ const MultipartForm=(props)=>{
             }
         })
         callAlertMui('success')
-        console.log('OK')
+        window.location='/';
     }
 
     return(
@@ -42,7 +42,7 @@ const MultipartForm=(props)=>{
              </h2>
             <div>
             <label  className="title-label">Title</label>
-            <input type='text' id="title-input" name='title'
+            <input type='text' id="title-input" name='title' 
             value={title} onChange={(e) => setTitle(e.target.value)}></input>
             </div>
             <div>

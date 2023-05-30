@@ -3,14 +3,19 @@ import './style.css';
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import { useParams} from 'react-router-dom';
+import { callAlertMui } from "../../functions";
+import AlertMui from "../../components/alert-box";
+
 
 export function UpdatePost(){
 
     const [title,setTitle]= useState('');
     const [author,setAuthor] = useState('');
     const [body,setBody]= useState('');
-    const [status,setStatus]= useState(true);
+    const [status,setStatus]= useState('true');
+    const [imageContent, setImageContent]= useState('');
     const { id } = useParams();
+    const [submitType,setSubmitType]= useState('no-image')
 
 
   //update post
@@ -20,10 +25,11 @@ export function UpdatePost(){
             title: title,
             body: body,
             author: author,
+            imageContent : imageContent,
             _id : id ,
           published : status}
         await axios.put(`http://localhost:5000/posts/${id}`, article);
-        console.log('update post')
+        callAlertMui('success')
         window.location='/';
    }
 
@@ -36,7 +42,36 @@ export function UpdatePost(){
       setTitle(jsonResponse[0].title);
       setAuthor(jsonResponse[0].author);
       setBody(jsonResponse[0].body);
+      setStatus(jsonResponse[0].published);
+      setImageContent(jsonResponse[0].imageContent);
+      console.log(jsonResponse[0].imageContent[0] + '  image content')
   };
+
+  const handleFileSelect = (event) => {
+    setImageContent(event.target.files);
+    /* setTimeout(()=>
+    console.log(imageContent),1000) */
+    setSubmitType('with-image')
+  }
+
+  const updatePostWithImage=()=>{
+    const formData = new FormData();
+    if(imageContent){
+        formData.append("image", imageContent[0]);
+    }
+    formData.append('title',title);
+    formData.append('author',author);
+    formData.append('body',body);
+    formData.append('published',status);
+
+    axios.put( `http://localhost:5000/posts/with-image/${id}`, formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+    })
+    callAlertMui('success')
+    window.location='/';
+  }
 
   useEffect(()=>{
     callRestApi()
@@ -62,6 +97,11 @@ export function UpdatePost(){
               value={author} onChange={(e) => setAuthor(e.target.value)} ></input>
             </div>
             <div>
+                <label>Image assets</label>
+                <input type='file' onChange={handleFileSelect} id='image-file'
+                name='image'></input>
+            </div>
+            <div>
             <label className="body-text">Body Text</label>
             <textarea id="body-input" name='body'
               value={body} onChange={(e) => setBody(e.target.value)} ></textarea>
@@ -72,9 +112,15 @@ export function UpdatePost(){
                 <option value={false}>Save as Template</option>
             </select>
           
-            <button id="publish-submit" onClick={updatePost}>Update</button>
-
+            <button id="publish-submit" onClick={
+              (e)=> submitType==='no-image'? updatePost(e) : updatePostWithImage()
+              }>
+              Update</button>
             </div>
+        </div>
+        <div id="alert-mui">
+          <div id='alert-error'> <AlertMui status='error'/></div>
+          <div  id='alert-success'> <AlertMui status='success'/> </div>
         </div>
 
        </div>

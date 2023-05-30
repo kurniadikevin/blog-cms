@@ -11,7 +11,6 @@ function Dashboard(props) {
     const loginForm = document.querySelector('.login-component');
     if(toggle === false ){
       loginForm.style.display='block';
-      console.log('clicked')
       setToggle(true);
     } else{
       loginForm.style.display='none';

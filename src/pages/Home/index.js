@@ -27,15 +27,12 @@ export function HomePage() {
     }
 
     const checkForPublishedStatus=(item)=>{
-       return item == true ? 'Published' : 'Unpublished'
+       return item === true || item === 'true' ? 'Published' : 'Unpublished'
     }
-
 
     // useEffect once
     useEffect(() =>{
-        callRestApi();
-        
-       
+        callRestApi();  
     },[rerender])
 
    
