@@ -14,10 +14,6 @@ const MultipartForm=()=>{
         setImageFile(event.target.files);
       }
 
-    const submitForm=()=>{
-        console.table(title,author,imageFile ? imageFile[0]: null,body,published)
-    }
-
     const submitFormMultipart=()=>{
         const formData = new FormData();
         if(imageFile){
@@ -27,7 +23,6 @@ const MultipartForm=()=>{
         formData.append('author',author);
         formData.append('body',body);
         formData.append('published',published);
-        console.table(formData)
 
         axios.post('http://localhost:5000/posts/new-multipart', formData, {
             headers: {
@@ -66,8 +61,9 @@ const MultipartForm=()=>{
                 <option value={true}>Publish</option>
                 <option value={false}>Save as Template</option>
             </select>
-            <button id="publish-submit" onClick={submitFormMultipart}>Submit</button>
-            <button id="publish-submit" onClick={submitForm}>Submit test</button>
+            <button id="publish-submit" 
+            onClick={()=> title && author && body ? submitFormMultipart() : alert('please fill the form')}>
+                Submit</button>
             </div>
         </div>
     )
