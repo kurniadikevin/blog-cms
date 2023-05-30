@@ -58,7 +58,7 @@ function LogIn(){
             <label for="password">Password</label>
             <input name="password" type="password"
               value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={loginUser}>Log In</button>
+            <button onClick={loginUser} id='login-btn'>Log In</button>
             </div>
         </div>
     )

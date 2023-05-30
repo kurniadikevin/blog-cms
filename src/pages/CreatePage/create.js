@@ -1,18 +1,21 @@
 import Dashboard from "../dashboard";
 import './style.css';
 import MultipartForm from "../../components/multipart-form";
-import TextForm from "../../components/text-form";
+import AlertMui from "../../components/alert-box";
 export function CreatePost(){
 
-  const toogleFormType=()=>{
-    const multiForm= document.querySelector()
-  }
 
    return(
     <div>
         <Dashboard/>
        <div className="create-main">
-        <MultipartForm/>
+        <MultipartForm type='new'/>
+        
+        <div id="alert-mui">
+          <div id='alert-error'> <AlertMui status='error'/></div>
+          <div  id='alert-success'> <AlertMui status='success'/> </div>
+        </div>
+
        </div>
     </div>
    )

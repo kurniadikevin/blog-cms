@@ -16,6 +16,10 @@
     flex-direction: column;   
 }
 
+label{
+    font-weight: 600;
+}
+
 input{
     height: 20px
 }
@@ -33,11 +37,21 @@ input{
     gap: 20px;
 }
 
-#publish-submit{
+#publish-submit, #login-btn{
     background-color: var(--text);
     color: var(--background);
     font-weight: 800;
     border-radius: 15%;
     border: none;
     padding: 8px 15px;
+}
+
+#alert-mui{
+    position: fixed;
+    top: 20px;
+    right: 30%;
+}
+
+#alert-success, #alert-error{
+    display: none;
 }

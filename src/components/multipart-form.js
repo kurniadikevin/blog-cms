@@ -1,8 +1,9 @@
 import { useState } from "react"
 import axios from "axios"
+import { callAlertMui } from "../functions";
 
 
-const MultipartForm=()=>{
+const MultipartForm=(props)=>{
     
     const [title,setTitle]= useState();
     const [author, setAuthor] = useState();
@@ -29,13 +30,16 @@ const MultipartForm=()=>{
               'Content-Type': 'multipart/form-data'
             }
         })
-        alert('post submitted')
+        callAlertMui('success')
         console.log('OK')
     }
 
     return(
     <div className="create-form" id="multipart-form">
-            <h2>Publish New Post</h2>
+            <h2>
+            {props.type === 'new'? 'Publish New Post':
+            'Update post'}
+             </h2>
             <div>
             <label  className="title-label">Title</label>
             <input type='text' id="title-input" name='title'
@@ -62,7 +66,7 @@ const MultipartForm=()=>{
                 <option value={false}>Save as Template</option>
             </select>
             <button id="publish-submit" 
-            onClick={()=> title && author && body ? submitFormMultipart() : alert('please fill the form')}>
+            onClick={()=> title && author && body ? submitFormMultipart() : callAlertMui('error')}>
                 Submit</button>
             </div>
         </div>

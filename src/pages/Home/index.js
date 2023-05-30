@@ -26,6 +26,9 @@ export function HomePage() {
         setRerender(!rerender);  
     }
 
+    const checkForPublishedStatus=(item)=>{
+       return item == true ? 'Published' : 'Unpublished'
+    }
 
 
     // useEffect once
@@ -66,7 +69,7 @@ export function HomePage() {
                             <div className='data-date'>
                                {formatDate(item.date)}
                             </div>
-                            <div className='publishStatus'> Published : {item.published}</div>
+                            <div className='publishStatus'> {checkForPublishedStatus(item.published)}</div>
                             <div className='btn-container'>
                             <Link className='updateBtn' id='link2'
                              to={{ pathname: `/posts/${item._id}/update`,  }}>

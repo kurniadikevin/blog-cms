@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import {toggleMode, toggleLightDarkMode, getValueLightDarkMode} from '../functions';
+import {toggleLightDarkMode, getValueLightDarkMode} from '../functions';
 import { useState } from 'react';
 
 function Dashboard(props) {

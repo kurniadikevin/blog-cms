@@ -69,3 +69,11 @@ export const renderSeeMore=(text,id)=>{
           </Link>
       )}
 }
+
+export const callAlertMui=(type)=>{
+  const alert= document.querySelector(`#alert-${type}`);
+  alert.style.display='inline'
+  setTimeout(()=>{
+    alert.style.display='none'
+  },4000)
+}
