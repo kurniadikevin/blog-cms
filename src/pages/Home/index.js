@@ -70,7 +70,7 @@ export function HomePage() {
                             <div className='btn-container'>
                             <Link className='updateBtn' id='link2'
                              to={{ pathname: `/posts/${item._id}/update`,  }}>
-                            <div>Update</div>
+                            <div >Update</div>
                             </Link>
                             <div id='deleteBtn' onClick={()=> deletePost(item)}>Delete</div>
                          

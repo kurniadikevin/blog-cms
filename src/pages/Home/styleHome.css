@@ -88,6 +88,7 @@
    font-weight: 700;
    text-decoration: none;
    display: none;
+   color: var(--text);
 }
 
 .updateBtn:hover, #deleteBtn:hover{
@@ -96,6 +97,4 @@
     padding-left: 10px;
 }
 
-    .updateBtn{
-        color: black;
-    }
+    
