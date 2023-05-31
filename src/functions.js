@@ -27,7 +27,7 @@ export const toggleLightDarkMode=()=>{
     root.style.setProperty('--background', white);
     root.style.setProperty('--text', black);
     toggleBtn.value = 'day';
-    iconMode.textContent='clear_day';
+    iconMode.textContent='light_mode';
   }
 }
 

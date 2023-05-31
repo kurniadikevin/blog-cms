@@ -12,7 +12,7 @@ export function UpdatePost(){
     const [title,setTitle]= useState('');
     const [author,setAuthor] = useState('');
     const [body,setBody]= useState('');
-    const [status,setStatus]= useState('true');
+    const [status,setStatus]= useState('');
     const [imageContent, setImageContent]= useState('');
     const { id } = useParams();
     const [submitType,setSubmitType]= useState('no-image')
@@ -109,7 +109,8 @@ export function UpdatePost(){
             <div className="btn-cont">
             <select name="published" onChange={(e) => setStatus(e.target.value)}>
                 <option value={true}>Publish</option>
-                <option value={false}>Save as Template</option>
+                <option value={false} >Save as Template</option>
+                <option value={status} selected>Unchanged</option>
             </select>
           
             <button id="publish-submit" onClick={
