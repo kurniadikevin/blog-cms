@@ -15,7 +15,7 @@ function LogIn(){
         const article = { 
            username : username,
         password : password};
-        await axios.post(`http://localhost:5000/users/log-in`, article).then(
+        await axios.post(`https://blog-api-production-8114.up.railway.app/users/log-in`, article).then(
             (res)=> {
               setCurrentUser('login as admin')
             console.log(res.config.data)
@@ -42,10 +42,6 @@ function LogIn(){
     loginComponent.style.display='none';
    }
 
-   //display control button by default
-   useEffect(()=>{
-   /*  displayControlBtn() */
-   },[])
 
     return(
         <div className="login-component">

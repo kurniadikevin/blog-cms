@@ -1,7 +1,7 @@
 const TextForm=()=>{
     return(
         <form className="create-form"  id="multipart-form"
-         method='post' action='http://localhost:5000/posts/new'>
+         method='post' action='https://blog-api-production-8114.up.railway.app/posts/new'>
             <h2>Publish New Post</h2>
             <div>
             <label  className="title-label">Title</label>

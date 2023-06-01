@@ -6,7 +6,7 @@
 
 **Blog-API**
 
-[blog-api](http://localhost:5000/) Deployment
+[blog-api](https://blog-api-production-8114.up.railway.app/) Deployment
 
 [blog-api](https://github.com/kurniadikevin/blog-api) Repository
 

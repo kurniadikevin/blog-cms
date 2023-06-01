@@ -28,14 +28,14 @@ export function UpdatePost(){
             imageContent : imageContent,
             _id : id ,
           published : status}
-        await axios.put(`http://localhost:5000/posts/${id}`, article);
+        await axios.put(`https://blog-api-production-8114.up.railway.app/posts/${id}`, article);
         callAlertMui('success')
         window.location='/';
    }
 
    // make default value on update
   const callRestApi = async () => {
-    const restEndpoint = `http://localhost:5000/posts/${id}`;
+    const restEndpoint = `https://blog-api-production-8114.up.railway.app/posts/${id}`;
       const response = await fetch(restEndpoint);
       const jsonResponse = await response.json();
       console.log(jsonResponse);
@@ -64,7 +64,7 @@ export function UpdatePost(){
     formData.append('body',body);
     formData.append('published',status);
 
-    axios.put( `http://localhost:5000/posts/with-image/${id}`, formData, {
+    axios.put( `https://blog-api-production-8114.up.railway.app/posts/with-image/${id}`, formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }

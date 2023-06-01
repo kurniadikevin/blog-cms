@@ -14,14 +14,14 @@ export function HomePage() {
     const [rerender, setRerender] = useState(false);
 
     const callRestApi = async () => {
-        const restEndpoint = "http://localhost:5000/posts/all";
+        const restEndpoint = "https://blog-api-production-8114.up.railway.app/posts/all";
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
         setData(jsonResponse);
     };
 
      const deletePost= async function(post) {
-         await axios.delete(`http://localhost:5000/posts/${post._id}`);
+         await axios.delete(`https://blog-api-production-8114.up.railway.app/posts/${post._id}`);
         console.log('Delete successful'); 
         setRerender(!rerender);  
     }

@@ -25,7 +25,7 @@ const MultipartForm=(props)=>{
         formData.append('body',body);
         formData.append('published',published);
 
-        axios.post('http://localhost:5000/posts/new-multipart', formData, {
+        axios.post('https://blog-api-production-8114.up.railway.app/posts/new-multipart', formData, {
             headers: {
               'Content-Type': 'multipart/form-data'
             }
