@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { useEffect, useState} from "react";
 import Dashboard from '../dashboard';
 import './styleHome.css';
-import { formatDate} from '../../functions';
+import { formatDate, getImageSrc, limitDisplayText,renderSeeMore} from '../../functions';
 import axios from 'axios';
 import LogIn from '../login/logIn';
 
@@ -14,23 +14,25 @@ export function HomePage() {
     const [rerender, setRerender] = useState(false);
 
     const callRestApi = async () => {
-        const restEndpoint = "https://blog-api-production-8114.up.railway.app/posts/all";
+        const restEndpoint = "http://localhost:5000/posts/all";
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
         setData(jsonResponse);
-        console.log(jsonResponse);      
     };
 
      const deletePost= async function(post) {
-         await axios.delete(`https://blog-api-production-8114.up.railway.app/posts/${post._id}`);
+         await axios.delete(`http://localhost:5000/posts/${post._id}`);
         console.log('Delete successful'); 
         setRerender(!rerender);  
     }
 
+    const checkForPublishedStatus=(item)=>{
+       return item === true || item === 'true' ? 'Published' : 'Unpublished'
+    }
+
     // useEffect once
     useEffect(() =>{
-        callRestApi();
-       
+        callRestApi();  
     },[rerender])
 
    
@@ -44,21 +46,31 @@ export function HomePage() {
                     return (
                         
                         <div className='data-container'>
+                            {
+                             item.imageContent?.length > 0 ?
+                            <img id='data-image' alt='post-image' src={getImageSrc(item.imageContent)}
+                            width={200} >
+                            </img>
+                            : ''
+                            }
                             <Link className='data-title' id='link2'
                              to={{ pathname: `/posts/${item._id}`,  }}
                             >
-                                <div >{item.title}</div>
+                                <div id='data-title-text'>{item.title}</div>
                             </Link>
-                            <div className='data-body'>{item.body}</div>
+                            <div className='data-body'>
+                                {limitDisplayText(item.body,30)}
+                               {renderSeeMore(item.body, item._id)}
+                            </div>
                             <div className='data-author'>{item.author}</div>
                             <div className='data-date'>
                                {formatDate(item.date)}
                             </div>
-                            <div className='publishStatus'> Published : {item.published}</div>
+                            <div className='publishStatus'> {checkForPublishedStatus(item.published)}</div>
                             <div className='btn-container'>
                             <Link className='updateBtn' id='link2'
                              to={{ pathname: `/posts/${item._id}/update`,  }}>
-                            <div>Update</div>
+                            <div >Update</div>
                             </Link>
                             <div id='deleteBtn' onClick={()=> deletePost(item)}>Delete</div>
                          

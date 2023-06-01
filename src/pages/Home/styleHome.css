@@ -27,13 +27,24 @@
     padding-bottom: 60px;
 }
 
+
+#data-image{
+    width: 100%;
+}
+
 .data-title{
     font-size: 18pt;
     padding-bottom: 50px;
     text-decoration: none;
-    color: black;
+    color: var(--text);
     font-weight: 600;
     transition: 0.5s;
+    padding-top: 20px;
+}
+
+#data-title-text{
+    border-bottom: 1px solid var(--text);
+    padding-bottom: 20px;
 }
     .data-title:hover{
         padding-left: 10px;
@@ -44,10 +55,15 @@
     padding-bottom: 25px;
    font-weight: 450;
    font-size: 12pt;
-   white-space: pre-line;
-
-   
+   white-space: pre-line;   
 }
+
+#link-seemore{
+    text-decoration: none;
+    font-weight: 700;
+    color: var(--text)
+}
+
 .data-author{
     padding-bottom: 25px;
     font-weight: 700;
@@ -55,6 +71,8 @@
 .data-date{
     font-size: 12pt;
     font-style: italic;
+    font-weight: 800;
+    padding-bottom: 10px;
 }
 
 .btn-container{
@@ -70,6 +88,7 @@
    font-weight: 700;
    text-decoration: none;
    display: none;
+   color: var(--text);
 }
 
 .updateBtn:hover, #deleteBtn:hover{
@@ -78,6 +97,4 @@
     padding-left: 10px;
 }
 
-    .updateBtn{
-        color: black;
-    }
+    

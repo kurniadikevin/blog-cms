@@ -10,17 +10,21 @@ function LogIn(){
     const [currentUser, setCurrentUser]= useState('not log in');
 
     const loginUser = async(e)=>{
-        e.preventDefault()
+        e.preventDefault();
+        if( username && password){
         const article = { 
            username : username,
         password : password};
-        await axios.post(`https://blog-api-production-8114.up.railway.app/users/log-in`, article).then(
+        await axios.post(`http://localhost:5000/users/log-in`, article).then(
             (res)=> {
               setCurrentUser('login as admin')
             console.log(res.config.data)
           }
             )
           displayControlBtn();
+        } else {
+          alert('please insert username and password')
+        }
    }
 
    const displayControlBtn=()=>{
@@ -38,12 +42,15 @@ function LogIn(){
     loginComponent.style.display='none';
    }
 
+   //display control button by default
+   useEffect(()=>{
+   /*  displayControlBtn() */
+   },[])
 
     return(
         <div className="login-component">
             <h2>Log-in to edit </h2>
-            <p>Status: {currentUser}</p>
-            <p>(admin for testing with username:admin123 password:123123)</p>
+            <p>{currentUser} (admin for testing with username: admin123 password: 123123)</p>
             <div className='loginForm'>
             <label for="username">Username</label>
             <input name="username" placeholder="username" type="text"
@@ -51,7 +58,7 @@ function LogIn(){
             <label for="password">Password</label>
             <input name="password" type="password"
               value={password} onChange={(e) => setPassword(e.target.value)} />
-            <button onClick={loginUser}>Log In</button>
+            <button onClick={loginUser} id='login-btn'>Log In</button>
             </div>
         </div>
     )

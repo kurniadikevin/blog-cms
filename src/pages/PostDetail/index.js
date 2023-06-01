@@ -3,6 +3,7 @@ import Dashboard from '../dashboard';
 import { useParams} from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { formatDate} from '../../functions';
+import { getImageSrc } from '../../functions';
 
 export function PostDetail() {
   
@@ -14,7 +15,7 @@ export function PostDetail() {
   //api for post
  
   const callRestApi = async () => {
-    const restEndpoint = `https://blog-api-production-8114.up.railway.app/posts/${id}`;
+    const restEndpoint = `http://localhost:5000/posts/${id}`;
       const response = await fetch(restEndpoint);
       const jsonResponse = await response.json();
       console.log(jsonResponse);
@@ -22,7 +23,7 @@ export function PostDetail() {
   };
 
   //api for comment
-  const restEndpointComment = `https://blog-api-production-8114.up.railway.app/posts/${id}/comment`;
+  const restEndpointComment = `http://localhost:5000/posts/${id}/comment`;
 
   const callRestApiComment = async () => {
       const responseCom = await fetch(restEndpointComment);
@@ -48,7 +49,14 @@ export function PostDetail() {
         <div>
           <div className='post-container'>
             <div className='post-col1'>
-             <div className='data-title' id='link2'>{item.title}</div>
+              {
+                item.imageContent?.length > 0 ?
+              <img id='post-image-detail' alt='post-image' src={getImageSrc(item.imageContent)}
+              width={550} >
+              </img>
+              : ''
+              }
+               <div className='data-title' id='link2'>{item.title}</div>
             </div>
             <div className='post-col2'>
               <div className='data-body'>{item.body}</div>
