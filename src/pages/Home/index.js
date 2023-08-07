@@ -22,7 +22,6 @@ export function HomePage() {
 
      const deletePost= async function(post) {
          await axios.delete(`${process.env.REACT_APP_API_URL}/posts/${post._id}`);
-        console.log('Delete successful'); 
         setRerender(!rerender);  
     }
 

@@ -18,7 +18,6 @@ export function PostDetail() {
     const restEndpoint = `${process.env.REACT_APP_API_URL}/posts/${id}`;
       const response = await fetch(restEndpoint);
       const jsonResponse = await response.json();
-      console.log(jsonResponse);
       setData( jsonResponse);
   };
 
@@ -28,7 +27,6 @@ export function PostDetail() {
   const callRestApiComment = async () => {
       const responseCom = await fetch(restEndpointComment);
       const jsonResponseCom = await responseCom.json();
-      console.log(jsonResponseCom);
       setComment( jsonResponseCom);
   };
 
