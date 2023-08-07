@@ -4,7 +4,6 @@ import MultipartForm from "../../components/multipart-form";
 import AlertMui from "../../components/alert-box";
 export function CreatePost(){
 
-
    return(
     <div>
         <Dashboard/>

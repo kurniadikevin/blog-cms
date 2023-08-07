@@ -25,13 +25,19 @@ const MultipartForm=(props)=>{
         formData.append('body',body);
         formData.append('published',published);
 
-        axios.post('https://blog-api-production-8114.up.railway.app/posts/new-multipart', formData, {
+        axios.post(`${process.env.REACT_APP_API_URL}/posts/new-multipart`, formData, {
             headers: {
-              'Content-Type': 'multipart/form-data'
+              'Content-Type': 'multipart/form-data',
+              'Bypass-Tunnel-Reminder' : 'bypass'
             }
         })
-        callAlertMui('success')
-        window.location='/';
+        .then((response)=>{
+            console.log(response)
+            callAlertMui('success');
+            window.location='/';
+        },(error)=>{
+            console.log(error)
+        })
     }
 
     return(

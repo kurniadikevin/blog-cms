@@ -14,14 +14,14 @@ export function HomePage() {
     const [rerender, setRerender] = useState(false);
 
     const callRestApi = async () => {
-        const restEndpoint = "https://blog-api-production-8114.up.railway.app/posts/all";
+        const restEndpoint = `${process.env.REACT_APP_API_URL}/posts/all`;
         const response = await fetch(restEndpoint);
         const jsonResponse = await response.json();
         setData(jsonResponse);
     };
 
      const deletePost= async function(post) {
-         await axios.delete(`https://blog-api-production-8114.up.railway.app/posts/${post._id}`);
+         await axios.delete(`${process.env.REACT_APP_API_URL}/posts/${post._id}`);
         console.log('Delete successful'); 
         setRerender(!rerender);  
     }
@@ -33,6 +33,7 @@ export function HomePage() {
     // useEffect once
     useEffect(() =>{
         callRestApi();  
+        
     },[rerender])
 
    

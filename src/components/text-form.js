@@ -1,7 +1,10 @@
 const TextForm=()=>{
+
+    const url=`${process.env.REACT_APP_API_URL}/posts/new`
+
     return(
         <form className="create-form"  id="multipart-form"
-         method='post' action='https://blog-api-production-8114.up.railway.app/posts/new'>
+         method='post' action= {url} >
             <h2>Publish New Post</h2>
             <div>
             <label  className="title-label">Title</label>

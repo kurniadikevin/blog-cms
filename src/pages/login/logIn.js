@@ -1,6 +1,6 @@
 import './style.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import {  useState } from 'react';
 
 
 function LogIn(){
@@ -15,7 +15,7 @@ function LogIn(){
         const article = { 
            username : username,
         password : password};
-        await axios.post(`https://blog-api-production-8114.up.railway.app/users/log-in`, article).then(
+        await axios.post(`${process.env.REACT_APP_API_URL}/users/log-in`, article).then(
             (res)=> {
               setCurrentUser('login as admin')
             console.log(res.config.data)

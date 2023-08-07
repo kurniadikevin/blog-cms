@@ -28,14 +28,18 @@ export function UpdatePost(){
             imageContent : imageContent,
             _id : id ,
           published : status}
-        await axios.put(`https://blog-api-production-8114.up.railway.app/posts/${id}`, article);
+        await axios.put(`${process.env.REACT_APP_API_URL}/posts/${id}`, article,{
+          headers : {
+            'Bypass-Tunnel-Reminder' : 'bypass'
+          }
+        });
         callAlertMui('success')
         window.location='/';
    }
 
    // make default value on update
   const callRestApi = async () => {
-    const restEndpoint = `https://blog-api-production-8114.up.railway.app/posts/${id}`;
+    const restEndpoint = `${process.env.REACT_APP_API_URL}/posts/${id}`;
       const response = await fetch(restEndpoint);
       const jsonResponse = await response.json();
       console.log(jsonResponse);
@@ -44,13 +48,11 @@ export function UpdatePost(){
       setBody(jsonResponse[0].body);
       setStatus(jsonResponse[0].published);
       setImageContent(jsonResponse[0].imageContent);
-      console.log(jsonResponse[0].imageContent[0] + '  image content')
   };
 
   const handleFileSelect = (event) => {
     setImageContent(event.target.files);
-    /* setTimeout(()=>
-    console.log(imageContent),1000) */
+  
     setSubmitType('with-image')
   }
 
@@ -64,13 +66,19 @@ export function UpdatePost(){
     formData.append('body',body);
     formData.append('published',status);
 
-    axios.put( `https://blog-api-production-8114.up.railway.app/posts/with-image/${id}`, formData, {
+    axios.put( `${process.env.REACT_APP_API_URL}/posts/with-image/${id}`, formData, {
         headers: {
-          'Content-Type': 'multipart/form-data'
+          'Content-Type': 'multipart/form-data',
+          'Bypass-Tunnel-Reminder' : 'bypass'
         }
     })
-    callAlertMui('success')
-    window.location='/';
+    .then((response)=>{
+        console.log(response)
+        callAlertMui('success');
+        window.location='/';
+        },(error)=>{
+            console.log(error)
+        })
   }
 
   useEffect(()=>{

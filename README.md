@@ -6,7 +6,7 @@
 
 **Blog-API**
 
-[blog-api](https://blog-api-production-8114.up.railway.app/) Deployment
+[blog-api](https://blackboard-api.loca.lt) Deployment
 
 [blog-api](https://github.com/kurniadikevin/blog-api) Repository
 
